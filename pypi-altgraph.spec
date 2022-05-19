@@ -4,13 +4,12 @@
 #
 Name     : pypi-altgraph
 Version  : 0.17.2
-Release  : 2
+Release  : 3
 URL      : https://files.pythonhosted.org/packages/a9/f1/62830c4915178dbc6948687916603f1cd37c2c299634e4a8ee0efc9977e7/altgraph-0.17.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/a9/f1/62830c4915178dbc6948687916603f1cd37c2c299634e4a8ee0efc9977e7/altgraph-0.17.2.tar.gz
 Summary  : Python graph (network) package
 Group    : Development/Tools
 License  : MIT
-Requires: pypi-altgraph-filemap = %{version}-%{release}
 Requires: pypi-altgraph-python = %{version}-%{release}
 Requires: pypi-altgraph-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
@@ -25,14 +24,6 @@ altgraph is a fork of graphlib: a graph (network) package for constructing
 graphs, BFS and DFS traversals, topological sort, shortest paths, etc. with
 graphviz output.
 
-%package filemap
-Summary: filemap components for the pypi-altgraph package.
-Group: Default
-
-%description filemap
-filemap components for the pypi-altgraph package.
-
-
 %package python
 Summary: python components for the pypi-altgraph package.
 Group: Default
@@ -45,7 +36,6 @@ python components for the pypi-altgraph package.
 %package python3
 Summary: python3 components for the pypi-altgraph package.
 Group: Default
-Requires: pypi-altgraph-filemap = %{version}-%{release}
 Requires: python3-core
 Provides: pypi(altgraph)
 
@@ -65,7 +55,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1652992645
+export SOURCE_DATE_EPOCH=1652994650
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -105,10 +95,6 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-pypi-altgraph
 
 %files python
 %defattr(-,root,root,-)
