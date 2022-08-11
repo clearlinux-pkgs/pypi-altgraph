@@ -4,7 +4,7 @@
 #
 Name     : pypi-altgraph
 Version  : 0.17.2
-Release  : 4
+Release  : 5
 URL      : https://files.pythonhosted.org/packages/a9/f1/62830c4915178dbc6948687916603f1cd37c2c299634e4a8ee0efc9977e7/altgraph-0.17.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/a9/f1/62830c4915178dbc6948687916603f1cd37c2c299634e4a8ee0efc9977e7/altgraph-0.17.2.tar.gz
 Summary  : Python graph (network) package
