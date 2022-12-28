@@ -4,7 +4,7 @@
 #
 Name     : pypi-altgraph
 Version  : 0.17.3
-Release  : 12
+Release  : 13
 URL      : https://files.pythonhosted.org/packages/5a/13/a7cfa43856a7b8e4894848ec8f71cd9e1ac461e51802391a3e2101c60ed6/altgraph-0.17.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/5a/13/a7cfa43856a7b8e4894848ec8f71cd9e1ac461e51802391a3e2101c60ed6/altgraph-0.17.3.tar.gz
 Summary  : Python graph (network) package
@@ -19,6 +19,9 @@ BuildRequires : pypi-pluggy
 BuildRequires : pypi-pytest
 BuildRequires : pypi-tox
 BuildRequires : pypi-virtualenv
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 altgraph is a fork of graphlib: a graph (network) package for constructing
@@ -64,15 +67,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1664205407
+export SOURCE_DATE_EPOCH=1672249475
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -89,8 +92,8 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-altgraph
-cp %{_builddir}/altgraph-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-altgraph/5b3c3863d521cf35e75e36a22e5ec4a80c93c528 || :
-cp %{_builddir}/altgraph-%{version}/doc/license.rst %{buildroot}/usr/share/package-licenses/pypi-altgraph/5c8cb37144bd49eb123da1cf3b7b2d098d155a80 || :
+cp %{_builddir}/altgraph-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-altgraph/5b3c3863d521cf35e75e36a22e5ec4a80c93c528
+cp %{_builddir}/altgraph-%{version}/doc/license.rst %{buildroot}/usr/share/package-licenses/pypi-altgraph/5c8cb37144bd49eb123da1cf3b7b2d098d155a80
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
